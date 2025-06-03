@@ -74,8 +74,14 @@ public:
                 large.push_back(largeIdx);
         }
 
-        for (auto idx : small) prob[idx] = 1.0;
-        for (auto idx : large) prob[idx] = 1.0;
+        for (auto idx : small) {
+            prob[idx] = 1.0;
+            alias[idx] = idx; // ensure alias is valid
+        }
+        for (auto idx : large) {
+            prob[idx] = 1.0;
+            alias[idx] = idx; // ensure alias is valid
+        }
 
         for (std::size_t i = 0; i < alias.size(); ++i) {
             if (alias[i] >= N) {
